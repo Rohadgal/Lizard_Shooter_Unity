@@ -98,6 +98,12 @@ namespace StarterAssets
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
 
+        // Fire data
+        [Header("Fire")]
+        public Transform fireBallSpawnPoint;
+        public GameObject fireBallPrefab;
+        public float fireBallSpeed = 10f;
+
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
         private PlayerInput _playerInput;
 #endif
@@ -159,6 +165,7 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
+            Fire();
         }
 
         private void LateUpdate()
@@ -387,6 +394,17 @@ namespace StarterAssets
             {
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
+        }
+
+        private void Fire()
+        {
+            if(_input.fire)
+            {
+                var fireBall = Instantiate(fireBallPrefab, fireBallSpawnPoint.position, fireBallSpawnPoint.rotation);
+                fireBall.GetComponent<Rigidbody>().velocity = fireBallSpawnPoint.up * fireBallSpeed;
+                _input.fire = false;
+            }
+            
         }
     }
 }
