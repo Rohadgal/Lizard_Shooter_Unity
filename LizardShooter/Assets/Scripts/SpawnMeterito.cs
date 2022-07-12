@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnMeterito : MonoBehaviour
 {
-    GameObject cube;
+    public GameObject meteorito;
     Vector3 m_Size;
 
     // Start is called before the first frame update
@@ -18,15 +18,13 @@ public class SpawnMeterito : MonoBehaviour
         m_Size = m_Size / 2;
 
         //Output to the console the size of the Collider volume
-        Debug.Log("Collider Size : " + m_Size);
-
-        cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        //Debug.Log("Collider Size : " + m_Size);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 randomPos = new Vector3(Random.Range(-m_Size.x, m_Size.x), 0, Random.Range(-m_Size.x, m_Size.z));
-        Instantiate(cube, randomPos, Quaternion.identity);
+        Vector3 randomPos = new Vector3(Random.Range(-m_Size.x, m_Size.x) + gameObject.transform.position.x, gameObject.transform.position.y, Random.Range(-m_Size.x, m_Size.z));
+        Instantiate(meteorito, randomPos, Quaternion.identity);
     }
 }
