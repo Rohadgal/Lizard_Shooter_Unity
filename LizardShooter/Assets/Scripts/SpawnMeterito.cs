@@ -6,6 +6,8 @@ public class SpawnMeterito : MonoBehaviour
 {
     public GameObject meteorito;
     Vector3 m_Size;
+    float countdown = 0;
+    public float cooldown = 10; //En segundos
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +26,15 @@ public class SpawnMeterito : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 randomPos = new Vector3(Random.Range(-m_Size.x, m_Size.x) + gameObject.transform.position.x, gameObject.transform.position.y, Random.Range(-m_Size.x, m_Size.z));
-        Instantiate(meteorito, randomPos, Quaternion.identity);
+        if(countdown <= 0)
+        {
+            Vector3 randomPos = new Vector3(Random.Range(-m_Size.x, m_Size.x) + gameObject.transform.position.x, gameObject.transform.position.y, Random.Range(-m_Size.x, m_Size.z));
+            Instantiate(meteorito, randomPos, Quaternion.identity);
+            countdown = cooldown;
+        }
+        else
+        {
+            countdown -= Time.deltaTime;
+        }
     }
 }
