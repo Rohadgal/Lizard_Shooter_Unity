@@ -17,7 +17,6 @@ public class MeteoritoMovement : MonoBehaviour
         m_Size = m_Size / 2;
 
         targetPos = new Vector3(Random.Range(-m_Size.x, m_Size.x), targetCollider.gameObject.transform.position.y, Random.Range(-m_Size.x, m_Size.z));
-        print(targetPos);
     }
 
     // Update is called once per frame
