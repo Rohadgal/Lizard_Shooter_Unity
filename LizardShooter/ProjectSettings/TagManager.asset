@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - TargetPlane
+  - Meteorito
   layers:
   - Default
   - TransparentFX

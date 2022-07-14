@@ -103,6 +103,7 @@ namespace StarterAssets
         public Transform fireBallSpawnPoint;
         public GameObject fireBallPrefab;
         public float fireBallSpeed = 10f;
+        public Camera Camera;
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
         private PlayerInput _playerInput;
